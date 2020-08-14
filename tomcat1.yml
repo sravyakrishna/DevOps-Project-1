@@ -1,5 +1,5 @@
 ---
-- hosts: ./inventory
+- hosts: localhost
   remote_user: root
 
   tasks:

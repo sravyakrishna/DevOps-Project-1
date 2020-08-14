@@ -1,9 +1,5 @@
----
-- hosts: localhost
-  remote_user: root
- 
   tasks:
-  - name: installing java 
+  - name: installing java
     apt: package=openjdk-8-jdk state=latest
 
   - name: Download Tomcat
@@ -14,7 +10,7 @@
 
   - name: copy techdata.war
     get_url: url=https://devops-work.s3-us-west-2.amazonaws.com/TechdatCommunicationss.war dest=/home/ubuntu
-  
+
   - name: copying the war file to server
     shell: cp /home/ubuntu/TechdatCommunicationss.war /home/ubuntu/apache-tomcat-8.0.27/webapps/
 

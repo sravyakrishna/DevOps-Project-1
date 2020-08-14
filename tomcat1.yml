@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: 52.14.88.149
   remote_user: root
 
   tasks:

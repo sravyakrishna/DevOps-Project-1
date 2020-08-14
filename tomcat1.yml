@@ -1,5 +1,5 @@
 ---
-- hosts: 52.14.88.149
+- hosts: 3.16.215.9
   remote_user: root
 
   tasks:

@@ -15,8 +15,8 @@ pipeline {
        stage ('Docker Push')
 	   {
 	    steps{
-		withCredentials([string(credentialsId: 'dockerhub-teja', variable: 'dockerhubpwd')]) {
-    sh "docker login -u sainava225 -p ${dockerhubpwd}"
+		withCredentials([string(credentialsId: 'docker-hub', variable: 'docker hub')]) {
+    sh "docker login -u shivadeshapathi -p ${docker hub}"
     }
     sh label: '', script: 'docker commit runubuntu sainava225/runubuntu' + ":$BUILD_NUMBER"
 	sh label: '', script: 'docker push sainava225/runubuntu' + ":$BUILD_NUMBER"

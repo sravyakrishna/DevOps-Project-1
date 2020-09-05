@@ -9,7 +9,7 @@ pipeline {
        stage('Docker Run') {
            agent any
            steps {
-                sh 'docker run -d -it --name shivaubuntu ubuntu'
+                sh 'docker run -d -it --name shivaubuntu1 ubuntu'
      }
    }
        stage ('Docker Push')
@@ -18,8 +18,8 @@ pipeline {
 		    withCredentials([string(credentialsId: 'dockerhub-shiva', variable: 'dockerhubpwd')]) {
                       sh "docker login -u shivadeshapathi -p ${dockerhubpwd}"
 }
-    sh label: '', script: 'docker commit shivaubuntu shivadeshapathi/shivaubuntu' + ":$BUILD_NUMBER"
-	sh label: '', script: 'docker push shivadeshapathi/shivaubuntu' + ":$BUILD_NUMBER"
+    sh label: '', script: 'docker commit shivaubuntu1 shivadeshapathi/shivaubuntu1 + ":$BUILD_NUMBER"
+	sh label: '', script: 'docker push shivadeshapathi/shivaubuntu1' + ":$BUILD_NUMBER"
     }
         }
     }

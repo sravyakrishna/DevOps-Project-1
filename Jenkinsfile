@@ -1,9 +1,19 @@
-node {
+pipeline
+{
+    agent any
+    stages
+    {
     stage('scm'){
+        steps
+        {
         git 'https://github.com/sravyakrishna/DevOps-Project-1.git'
+        }
     }
     stage('build'){
+        steps
+        {
         sh 'mvn package'
+        }
     }
     post
     {

@@ -17,7 +17,7 @@ pipeline
         {
             steps
             {
-                sh label: '', script: 'mvn package'
+                sh label: '', script: 'mvn packages'
             }
         }
         
@@ -26,11 +26,11 @@ pipeline
     {
         failure
         {
-            emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has FAILED", to: 'sainavateja1@gmail.com'
+            emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has FAILED", to: 'sravyakrishna1324@gmail.com'
         }
         success
         {
-            emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has SUCCEDED", to: 'sainavateja1@gmail.com'
+            emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has SUCCEDED", to: 'sravyakrishna1324@gmail.com'
         }
     }
 }

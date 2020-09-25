@@ -1,26 +1,19 @@
-stages {
-     stage('Docker Pull') {
-            steps {
-                sh label: '', script: 'docker pull ubuntu:latest'
-            }
+node {
+    stage('scm'){
+        git 'https://github.com/sravyakrishna/DevOps-Project-1.git'
+    }
+    stage('build'){
+        sh 'mvn package'
+    }
+    post
+    {
+        failure
+        {
+            emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has FAILED", to: 'sainavateja1@gmail.com'
         }
-       stage('Docker Run') {
-           agent any
-           steps {
-                sh 'docker run -d -it --name shivaubuntu ubuntu'
-     }
-   }
-       stage ('Docker Push')
-	   {
-	    steps{
-		    withCredentials([string(credentialsId: 'dockerhub-shiva', variable: 'dockerhubpwd')]) {
-                      sh "docker login -u shivadeshapathi -p ${dockerhubpwd}"
+        success
+        {
+            emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has SUCCEDED", to: 'sainavateja1@gmail.com'
+        }
+    }
 }
-    sh label: '', script: 'docker commit shivaubuntu shivadeshapathi/shivaubuntu + ":$BUILD_NUMBER"
-	sh label: '', script: 'docker push shivadeshapathi/shivaubuntu' + ":$BUILD_NUMBER"
-    }
-        }
-    }
-   
-       
-

@@ -1,19 +1,26 @@
+#!groovy
+
 pipeline
 {
     agent any
     stages
     {
-    stage('scm'){
-        steps
+        stage ('Download')
         {
-        git 'https://github.com/sravyakrishna/DevOps-Project-1.git'
+            steps
+            {
+                git 'https://github.com/snteja/DevOps-Project.git'
+            }
         }
-    }
-    stage('build'){
-        steps
+        
+        stage ('Build')
         {
-        sh 'mvn package'
+            steps
+            {
+                sh label: '', script: 'mvn package'
+            }
         }
+        
     }
     post
     {
@@ -25,6 +32,5 @@ pipeline
         {
             emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has SUCCEDED", to: 'sainavateja1@gmail.com'
         }
-     }
     }
 }

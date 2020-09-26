@@ -1,4 +1,5 @@
-node{
+pipeline{
+   agent any
    envirorment{
        DOCKER_TAG = getDockerTag{}
     }

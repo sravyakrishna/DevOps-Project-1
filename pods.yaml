@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: pod
 metadata:
-   name: nodeapp
+   name: shivaapp
    lables:
-     app:nodeapp
+     app: shivaapp
 spec:
   containers:
-    - name: nodeapp
-      image: shivadeshapathi/nodeapp:tagversion
+    - name: shivaapp
+      image: shivadeshapathi/shivaapp:tagversion
       ports:
        - containerPort: 8080    

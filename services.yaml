@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nodeapp
+  name: shivaapp
 spec:
   selector:
-    app: nodeapp
+    app: shivaapp
    ports:
    - protocol: TCP
      port: 80

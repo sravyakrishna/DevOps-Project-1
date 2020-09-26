@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: shivaapp
+  name: shiva-app
 spec:
   selector:
-    app: shivaapp
+    app: shiva-app
    ports:
    - protocol: TCP
      port: 80
